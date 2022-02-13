@@ -1,0 +1,49 @@
+{% extends 'base_support.html' %}
+
+{% block title %}
+Поддержка
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<p class="flash">{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+ <table>
+     <h2>Все пользователи</h2>
+
+        <form class="form" action="{{url_for('.userslist')}}" method="POST">
+            <input class="prod__input" type="text" name="searchname" id="searchname" placeholder="Имя">
+            <input class="prod__input" type="text" name="searchlogin" id="searchlogin" placeholder="Логин">
+            <input class="product__btn" type="submit" value="Поиск"><br>
+        </form>
+
+<table class="prod__table" width="100%">
+    <tr>
+        <td>Имя</td>
+        <td>Логин</td>
+        <td>Почта</td>
+        <td>Номер</td>
+        <td></td>
+    </tr>
+
+    {% for j in user %}
+    <tr>
+    <td >{{ j.name }}</td>
+        <td>{{ j.username }}</td>
+        <td>{{ j.email }}</td>
+        <td>{{ j.number }}</td>
+
+        <td><a href="/chat">Написать</a>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

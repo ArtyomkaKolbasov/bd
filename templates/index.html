@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('.static', filename='css/style.css')}}" rel="stylesheet" />
+    <title>Главная</title>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<p class="flash">{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+        {%- block mainmenu -%}
+    <div class="mainmenu__header">
+    <ul class="mainmenu">
+        <li><a  href="/support">Зайти как работник</a></li>
+        <li><a  href="/user">Зайти как пользователь</a></li>
+    </ul>
+        {% endblock mainmenu -%}
+         </div>
+<h2> Добро пожаловать!</h2>
+
+<table>
+    <form class="form" action="{{url_for('.index')}}" method="POST">
+            <input class="prod__input" type="text" name="searchname" id="searchname" placeholder="Тип">
+            <input class="prod__input" type="text" name="searchlogin" id="searchlogin" placeholder="Для кого">
+            <input class="prod__input" type="text" name="searchsize" id="searchsize" placeholder="Размер">
+            <input class="product__btn" type="submit" value="Поиск"><br>
+        </form>
+    <div class="welcome">
+
+
+        <table class="prod__table" width="100%">
+    <tr>
+        <td>Тип</td>
+        <td>Для кого</td>
+        <td>Выкройка</td>
+        <td>Размер</td>
+        <td>Материал</td>
+        <td>Расход материала</td>
+        <td>Порядок выполнения</td>
+
+    </tr>
+
+    {% for i in prod %}
+    <tr>
+    <td class="prod__td">{{ i.type }}</td>
+        <td>{{ i.purpose }}</td>
+        <td>{{ i.pattern }}</td>
+        <td>{{ i.size }}</td>
+        <td>{{ i.material }}</td>
+        <td>{{ i.consump }}</td>
+        <td>{{ i.plan }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'base_support.html' %}
+
+{% block title %}
+Поддержка
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+<h2>Обновление данных</h2>
+    <div>
+        <form class="form" action="/update/{{prod1.id}}" method="POST">
+
+            <input class="product__input" type="text" name="type" id="type" placeholder="Тип" required="required" value="{{prod1.type}}">
+            <input class="product__input" type="text" name="purpose" id="purpose" placeholder="Для кого" required="required" value="{{prod1.purpose}}">
+            <input class="product__input" type="text" name="pattern" id="pattern" placeholder="Выкройка" required="required" value="{{prod1.pattern}}">
+            <input class="product__input" type="text" name="size" id="size" placeholder="Размер" required="required" value="{{prod1.size}}">
+            <input class="product__input" type="text" name="material" id="material" placeholder="Материал" required="required" value="{{prod1.material}}">
+            <input class="product__input" type="text"  name="consump" id="consump" placeholder="Расход материала" required="required" value="{{prod1.consump}}">
+            <input class="product__input" type="text"  name="plan" id="plan" placeholder="Порядок выполнения" required="required" value="{{prod1.plan}}">
+
+            <input class="product__btn" type="submit" value="Обновить"><br>
+        </form>
+    </div>
+{% endblock %}

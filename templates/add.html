@@ -1,0 +1,28 @@
+{% extends 'base_support.html' %}
+
+{% block title %}
+Поддержка
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+ <h2>Добавление данных</h2>
+    <div>
+        <form class="form" action="{{url_for('.add')}}" method="POST">
+
+            <input class="product__input" type="text" name="type" id="type" placeholder="Тип" required="required">
+            <input class="product__input" type="text" name="purpose" id="purpose" placeholder="Для кого" required="required">
+            <input class="product__input" type="text" name="pattern" id="pattern" placeholder="Выкройка" required="required">
+            <input class="product__input" type="text" name="size" id="size" placeholder="Размер" required="required">
+            <input class="product__input" type="text" name="material" id="material" placeholder="Материал" required="required">
+            <input class="product__input" type="text"  name="consump" id="consump" placeholder="Расход материала" required="required">
+            <p><textarea class="product__input" name="plan" id="plan" placeholder="Порядок выполнения" rows=7 cols=40></textarea> </p>
+
+            <input class="product__btn" type="submit" value="Добавить"><br>
+        </form>
+    </div>
+
+ <table>
+
+{% endblock %}

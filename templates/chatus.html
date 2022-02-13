@@ -1,0 +1,52 @@
+{% extends 'base_user.html' %}
+
+{% block title %}
+Поддержка
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<p class="flash">{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<h2>Новое сообщение</h2>
+<form class="form" action="{{url_for('.chatus')}}" method="POST">
+            <input class="product__input" type="text" name="supportid" id="support" placeholder="Кому">
+            <input class="product__input" type="text" name="userid" id="user" placeholder="От кого">
+            <input class="product__input" type="text" name="msg" id="msg" placeholder="Сообщение">
+            <input class="product__btn" type="submit" value="Отправить"><br>
+        </form>
+<table>
+<h2>Все сообщения</h2>
+  <form class="form" action="{{url_for('.chat')}}" method="POST">
+            <input class="prod__input" type="text" name="supportid" id="supportid" placeholder="Кому">
+            <input class="prod__input" type="text" name="userid" id="userid" placeholder="От кого">
+            <input class="product__btn" type="submit" value="Поиск"><br>
+        </form>
+
+<table class="prod__table" width="100%">
+    <tr>
+        <td>Пользователь</td>
+        <td>Поддержка</td>
+        <td>Сообщение</td>
+        <td>Действия</td>
+    </tr>
+
+    {% for i in prod %}
+    <tr>
+        <td>{{ i.user_username }}</td>
+        <td>{{ i.support_username }}</td>
+        <td>{{ i.message }}</td>
+        <td><a href="/deletemes/{{i.id}}">Удалить</a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

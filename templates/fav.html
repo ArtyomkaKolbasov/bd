@@ -1,0 +1,25 @@
+{% extends 'base_user.html' %}
+
+{% block title %}
+Поддержка
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h2>Избранное</h2>
+<table class="prod__table" width="100%">
+    <tr>
+        <td>Пользователь</td>
+        <td>Выкройка</td>
+        <td>Действия</td>
+    </tr>
+
+    {% for i in prod %}
+    <tr>
+    <td class="prod__td">{{ i.type }}</td>
+        <td>{{ i.user_id }}</td>
+        <td>{{ i.support_id }}</td>
+        <td><Удалить</td>
+            </tr>
+    {% endfor %}
+{% endblock %}
